@@ -37,19 +37,19 @@ public class TesteCadastro {
 
         dsl.escrever("elementosForm:nome", "Jhonattan");
         dsl.escrever("elementosForm:sobrenome", "Gomes");
-        dsl.clicarBotoes("elementosForm:sexo:0");
-        driver.findElement(By.id("elementosForm:comidaFavorita:2")).click();
-        new Select(driver.findElement(By.id("elementosForm:escolaridade"))).selectByVisibleText("Mestrado");
-        new Select(driver.findElement(By.id("elementosForm:esportes"))).selectByVisibleText("Natacao");
-        driver.findElement(By.id("elementosForm:cadastrar")).click();
+        dsl.clicarRadio("elementosForm:sexo:0");
+        dsl.clicarRadio("elementosForm:comidaFavorita:2");
+        dsl.selecionarCombo("elementosForm:escolaridade", "Mestrado");
+        dsl.selecionarCombo("elementosForm:esportes", "Natacao");
+        dsl.clicarBotao("elementosForm:cadastrar");
 
-        Assert.assertTrue(driver.findElement(By.id("resultado")).getText().startsWith("Cadastrado!"));
-        Assert.assertTrue(driver.findElement(By.id("descNome")).getText().endsWith("Jhonattan"));
-        Assert.assertEquals("Sobrenome: Gomes", driver.findElement(By.id("descSobrenome")).getText());
-        Assert.assertEquals("Sexo: Masculino", driver.findElement(By.id("descSexo")).getText());
-        Assert.assertEquals("Comida: Pizza", driver.findElement(By.id("descComida")).getText());
-        Assert.assertEquals("Escolaridade: mestrado", driver.findElement(By.id("descEscolaridade")).getText());
-        Assert.assertEquals("Esportes: Natacao", driver.findElement(By.id("descEsportes")).getText());
+        Assert.assertTrue(dsl.obterTexto("resultado").startsWith("Cadastrado!"));
+        Assert.assertTrue(dsl.obterTexto("descNome").endsWith("Jhonattan"));;
+        Assert.assertEquals("Sobrenome: Gomes", dsl.obterTexto("descSobrenome"));
+        Assert.assertEquals("Sexo: Masculino", dsl.obterTexto("descSexo"));
+        Assert.assertEquals("Comida: Pizza", dsl.obterTexto("descComida"));
+        Assert.assertEquals("Escolaridade: mestrado", dsl.obterTexto("descEscolaridade"));
+        Assert.assertEquals("Esportes: Natacao", dsl.obterTexto("descEsportes"));
 
     }
 

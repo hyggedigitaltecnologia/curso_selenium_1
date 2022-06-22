@@ -40,7 +40,7 @@ public class DSL {
         return combo.getFirstSelectedOption().getText();
     }
 
-    public void clicarBotoes(String id) {
+    public void clicarBotao(String id) {
         driver.findElement(By.id(id)).click();
     }
 

@@ -53,8 +53,8 @@ public class TesteCampoTreinamento {
     @Test
     public void deveInteragirComRadioButton() {
 
-        driver.findElement(By.id("elementosForm:sexo:0")).click();
-        Assert.assertTrue(driver.findElement(By.id("elementosForm:sexo:0")).isSelected());
+        dsl.clicarRadio("elementosForm:sexo:0");
+        Assert.assertTrue(dsl.isRadioMarcado("elementosForm:sexo:0");
 
     }
 
@@ -115,7 +115,7 @@ public class TesteCampoTreinamento {
     @Test
     public void deveInteragirComBotoes() {
 
-        dsl.clicarBotoes("buttonSimple");
+        dsl.clicarBotao("buttonSimple");
         WebElement botao = driver.findElement(By.id("buttonSimple"));
         Assert.assertEquals("Obrigado!", botao.getAttribute("value"));
 
