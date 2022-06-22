@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 public class TesteCadastro {
 
     private WebDriver driver;
+    private  DSL dsl;
 
     @Before
     public void inicializa() {
@@ -20,6 +21,7 @@ public class TesteCadastro {
         driver = new ChromeDriver();
         driver.manage().window().setSize(new Dimension(1200, 765));
         driver.get("file:///" + System.getProperty("user.dir") + "./src/main/resources/componentes.html");
+        dsl = new DSL(driver);
 
     }
 
@@ -33,9 +35,9 @@ public class TesteCadastro {
     @Test
     public void deveRealizarCadastroComSucesso() {
 
-        driver.findElement(By.id("elementosForm:nome")).sendKeys("Jhonattan");
-        driver.findElement(By.id("elementosForm:sobrenome")).sendKeys("Gomes");
-        driver.findElement(By.id("elementosForm:sexo:0")).click();
+        dsl.escrever("elementosForm:nome", "Jhonattan");
+        dsl.escrever("elementosForm:sobrenome", "Gomes");
+        dsl.clicarBotoes("elementosForm:sexo:0");
         driver.findElement(By.id("elementosForm:comidaFavorita:2")).click();
         new Select(driver.findElement(By.id("elementosForm:escolaridade"))).selectByVisibleText("Mestrado");
         new Select(driver.findElement(By.id("elementosForm:esportes"))).selectByVisibleText("Natacao");
