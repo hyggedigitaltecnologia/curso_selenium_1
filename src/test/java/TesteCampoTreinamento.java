@@ -54,7 +54,7 @@ public class TesteCampoTreinamento {
     public void deveInteragirComRadioButton() {
 
         dsl.clicarRadio("elementosForm:sexo:0");
-        Assert.assertTrue(dsl.isRadioMarcado("elementosForm:sexo:0");
+        Assert.assertTrue(dsl.isRadioMarcado("elementosForm:sexo:0"));
 
     }
 

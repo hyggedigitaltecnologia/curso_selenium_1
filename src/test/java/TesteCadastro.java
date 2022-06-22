@@ -13,6 +13,7 @@ public class TesteCadastro {
 
     private WebDriver driver;
     private  DSL dsl;
+    private CampoTreinamentoPage page;
 
     @Before
     public void inicializa() {
@@ -22,6 +23,7 @@ public class TesteCadastro {
         driver.manage().window().setSize(new Dimension(1200, 765));
         driver.get("file:///" + System.getProperty("user.dir") + "./src/main/resources/componentes.html");
         dsl = new DSL(driver);
+        page = new CampoTreinamentoPage(driver);
 
     }
 
@@ -35,7 +37,7 @@ public class TesteCadastro {
     @Test
     public void deveRealizarCadastroComSucesso() {
 
-        dsl.escrever("elementosForm:nome", "Jhonattan");
+        page.setName("Jhonattan");
         dsl.escrever("elementosForm:sobrenome", "Gomes");
         dsl.clicarRadio("elementosForm:sexo:0");
         dsl.clicarRadio("elementosForm:comidaFavorita:2");
